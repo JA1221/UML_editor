@@ -19,7 +19,7 @@ public class ToolBar extends JToolBar {
             Button button = new Button();
 
             button.setSize(50, 50);
-            button.setIcon(new ImageIcon(getClass().getResource("images/" + name + ".png")));
+            button.setIcon(new ImageIcon(getClass().getResource("ButtonIcon/" + name + ".png")));
             // System.out.println(getClass());
             button.setToolTipText(name);
 
