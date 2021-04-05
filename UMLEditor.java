@@ -2,15 +2,19 @@ import javax.swing.*;
 import java.awt.*;
 import view.MenuBar;
 import view.ToolBar;
+import view.Canvas;
 
 public class UMLEditor extends JFrame{
     private MenuBar menuBar = new MenuBar();
     private ToolBar toolbar = new ToolBar();
+    private Canvas canvas = Canvas.getInstance();
 
     public UMLEditor() {
         initComponents();
+
         this.setJMenuBar(menuBar);
         this.getContentPane().add(toolbar, BorderLayout.WEST);
+        this.getContentPane().add(canvas, BorderLayout.CENTER);
     }
 
     private void initComponents() {

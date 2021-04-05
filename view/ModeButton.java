@@ -17,6 +17,7 @@ public class ModeButton extends JButton {
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Canvas.getInstance().setMode(mode);
                 System.out.println("SetMode:" + _mode);
             }
         });
