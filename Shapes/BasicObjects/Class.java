@@ -10,12 +10,12 @@ public class Class extends BasicObjects{
 
     public Class(int X, int Y) {
         super(X, Y);
-        SetSize(X, Y);
+        SetSize(DefaultWidth, DefaultHeight);
     }
 
     public Class(Point p) {
         super(p.x, p.y);
-        SetSize(p.x, p.y);
+        SetSize(DefaultWidth, DefaultHeight);
     } 
 
     @Override

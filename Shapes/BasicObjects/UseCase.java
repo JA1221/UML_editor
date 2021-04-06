@@ -10,12 +10,12 @@ public class UseCase extends BasicObjects{
 
     public UseCase(int X, int Y) {
         super(X, Y);
-        SetSize(X, Y);
+        SetSize(DefaultWidth, DefaultHeight);
     }
 
     public UseCase(Point p) {
         super(p.x, p.y);
-        SetSize(p.x, p.y);
+        SetSize(DefaultWidth, DefaultHeight);
     }
 
     @Override
