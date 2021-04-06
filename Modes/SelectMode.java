@@ -18,10 +18,14 @@ public class SelectMode extends Mode{
         _currentPoint = new Point(_pressedPoint);
         _shape = getPressedShape(e.getPoint());
 
-        if(_shape == null){ // 點空區，可圈選
+        if(_shape == null){ // 點空區，開始圈選
+            deselectAll(); //取消所有選取
             _shape = new SelectedArea(e.getX(), e.getY());
-            canvas.AddShape(_shape);
+            canvas.addShape(_shape);
             _selectFlag = true;
+        }else{ //有shape & 沒被選過
+            if(!_shape.isSelected())
+                singleSelection(_shape);
         }
 
         super.mousePressed(e);
@@ -32,23 +36,26 @@ public class SelectMode extends Mode{
         if(_selectFlag){ // 正在圈選
             updateSelectedArea(_shape);
         }else{ // 移動shape
-            _shape.Move(e.getX() - _currentPoint.x, e.getY() - _currentPoint.y);
+            for(Shape shape : canvas.GetShapes()) {
+                if(shape.isSelected())
+                    shape.Move(e.getX() - _currentPoint.x, e.getY() - _currentPoint.y);
+            }
         }
 
         _currentPoint = e.getPoint();
-
         super.mouseDragged(e);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         if(_selectFlag){ //圈選完
-            canvas.removeShape(_shape);
-            _selectFlag = false;
-            _shape = null;           
-        }else{ //移動完
-
+            canvas.removeShape(_shape); //移除圈選圖案
+            deselectAll(); //重設shapes的isSelected
+            multiSelection(_shape); //將圈選的shapes設定狀態      
         }
+
+        _selectFlag = false;
+        _shape = null;  
 
         super.mouseReleased(e);
     };
@@ -72,5 +79,38 @@ public class SelectMode extends Mode{
 
         selectedArea.SetLocation(Math.min(x1, x2), Math.min(y1, y2));
         selectedArea.SetSize(Math.abs(x1 - x2), Math.abs(y1 - y2));
+    }
+
+    private void multiSelection(Shape area) {
+        List<Shape> shapes = canvas.GetShapes();
+        int shapeCount = shapes.size();
+
+        for(int i = 0; i < shapeCount; i++) {
+            Point p1 = new Point(shapes.get(i).getX(), shapes.get(i).getY());
+            Point p2 = new Point(shapes.get(i).getX() + shapes.get(i).getWidth(), shapes.get(i).getY() + shapes.get(i).getHeight());
+
+            //shape左上右下都在selectedArea內
+            if(area.IsInside(p1) & area.IsInside(p2)){
+                selected(shapes.get(i--));
+                shapeCount--;
+            }
+        }
+    }
+
+    private void singleSelection(Shape shape) {
+        deselectAll();
+        selected(shape);
+    }
+
+    private void selected(Shape shape) {
+        canvas.removeShape(shape);
+        canvas.addShape(shape);
+        shape.setSelected(true);
+    }
+
+    private void deselectAll() {
+        for(Shape shape : canvas.GetShapes()){
+            shape.setSelected(false);
+        }
     }
 }
