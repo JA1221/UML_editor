@@ -8,7 +8,6 @@ public abstract class Shape {
 
     private int _width, _height;
     private boolean _isSelected = false;
-    private int _depth = 0;
 
     public Shape(){
         this(0, 0, 0, 0);
@@ -54,6 +53,22 @@ public abstract class Shape {
 
     public int getHeight() {
         return _height;
+    }
+
+    public int getX(){
+        return X;
+    }
+
+    public int getY(){
+        return Y;
+    }
+
+    public void setSelected(boolean isSelected) {
+        _isSelected = isSelected;
+    }
+
+    public boolean isSelected() {
+        return _isSelected;
     }
 
     public abstract void Draw(Graphics g);

@@ -30,7 +30,7 @@ public class Canvas extends JPanel {
         return _canvas;
     }
 
-    public List<Shape> AddShape(Shape shape){
+    public List<Shape> addShape(Shape shape){
         _shapes.add(shape);
 
         return _shapes;

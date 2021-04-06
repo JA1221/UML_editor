@@ -10,7 +10,7 @@ public class BasicObjectMode extends Mode {
     
     @Override
     public void mousePressed(MouseEvent e) {
-        canvas.AddShape(shape);
+        canvas.addShape(shape);
 
         super.mousePressed(e);
     }
