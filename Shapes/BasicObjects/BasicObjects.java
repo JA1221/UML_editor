@@ -54,7 +54,8 @@ public abstract class BasicObjects extends Shape{
     }
 
     protected void DrawPoints(Graphics g){
-        for(Port p : Ports){
+        if(isSelected()){
+           for(Port p : Ports)
             p.Draw(g);
         }
     }
