@@ -36,6 +36,10 @@ public class Canvas extends JPanel {
         return _shapes;
     }
 
+    public void removeShape(Shape shape){
+        _shapes.remove(shape);
+    }
+
     public List<Shape> GetShapes(){
         return _shapes;
     }
