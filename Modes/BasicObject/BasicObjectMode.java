@@ -6,7 +6,7 @@ import Modes.Mode;
 import Shapes.Shape;
 
 public class BasicObjectMode extends Mode {
-    Shape shape;
+    protected Shape shape;
     
     @Override
     public void mousePressed(MouseEvent e) {
