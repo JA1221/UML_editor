@@ -48,5 +48,13 @@ public abstract class Shape {
         return (x > X) & (x < X + _width) & (y > Y) && (y < Y + _height);
     }
 
+    public int getWidth() {
+        return _width;
+    }
+
+    public int getHeight() {
+        return _height;
+    }
+
     public abstract void Draw(Graphics g);
 }
