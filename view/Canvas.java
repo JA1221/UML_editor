@@ -70,7 +70,9 @@ public class Canvas extends JPanel {
                     repaint();
                 }
             }
+        });
 
+        addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e){
                 if(_mode != null){
