@@ -39,6 +39,14 @@ public abstract class BasicObjects extends Shape{
             Ports[i].Move(offsetX, offsetY);
     }
 
+    @Override
+    public void Move(int offsetX, int offsetY) {
+        super.Move(offsetX, offsetY);
+
+        for (int i = 0; i < Ports.length; i++) 
+            Ports[i].Move(offsetX, offsetY);
+    }
+
     private void createPorts(){
         Ports = new Port[PortNumber];
         for (int i = 0; i < PortNumber; i++)

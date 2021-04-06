@@ -4,8 +4,7 @@ import java.awt.*;
 
 public class Port {
     protected int X, Y;
-    final int SquareLength = 10;
-    private boolean Visible;
+    final int SquareLength = 8;
 
     public Port() {
         this(0, 0);
@@ -14,7 +13,6 @@ public class Port {
     public Port(int X, int Y) {
         this.X = X;
         this.Y = Y;
-        Visible = false;
     }
     
     public double GetDistanceFrom(Point p) {
@@ -22,9 +20,7 @@ public class Port {
     }
 
     public void Draw(Graphics g) {
-        if(Visible) {
-            g.fillRect(X - SquareLength / 2, Y - SquareLength / 2, SquareLength, SquareLength);
-        }
+        g.fillRect(X - SquareLength / 2, Y - SquareLength / 2, SquareLength, SquareLength);
     }
 
     public void SetLocation(int X, int Y) {

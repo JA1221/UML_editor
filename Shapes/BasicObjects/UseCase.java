@@ -25,5 +25,7 @@ public class UseCase extends BasicObjects{
 
         g.setColor(Color.BLACK);
         g.drawOval(X, Y, DefaultWidth, DefaultHeight);
+
+        DrawPoints(g);
     }
 }
