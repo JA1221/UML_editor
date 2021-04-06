@@ -41,6 +41,12 @@ public abstract class Shape {
         Y += offsetY;
     }
    
-    public abstract void Draw(Graphics g);
+    public boolean IsInside(Point p) {
+        int x = p.x;
+        int y = p.y;
 
+        return (x > X) & (x < X + _width) & (y > Y) && (y < Y + _height);
+    }
+
+    public abstract void Draw(Graphics g);
 }
