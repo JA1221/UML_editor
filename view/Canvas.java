@@ -11,15 +11,17 @@ import javax.swing.JPanel;
 
 import Modes.Mode;
 import Shapes.Shape;
-
+import Shapes.Lines.Line;
 
 public class Canvas extends JPanel {
     private static Canvas _canvas;
+    private List<Line> _lines;
     private List<Shape> _shapes;
     private Mode _mode;
     
     public Canvas() {
         _shapes = new ArrayList<Shape>();
+        _lines = new ArrayList<Line>();
         InitializeMouseEvents();
     }
 
@@ -44,10 +46,27 @@ public class Canvas extends JPanel {
         return _shapes;
     }
 
+    public List<Line> addLine(Line line) {
+        _lines.add(line);
+
+        return _lines;
+    }
+
+    public void removeLine(Line line) {
+        _lines.remove(line);
+    }
+
+    public List<Line> getLines() {
+        return _lines;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         setBackground(Color.LIGHT_GRAY);
+
+        for(Line line : _lines)
+            line.draw(g);
 
         for(Shape shape : _shapes)
             shape.Draw(g);
