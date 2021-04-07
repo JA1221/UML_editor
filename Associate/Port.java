@@ -3,7 +3,7 @@ package Associate;
 import java.awt.*;
 
 public class Port {
-    protected int X, Y;
+    private int _x, _y;
     final int SquareLength = 8;
 
     public Port() {
@@ -11,25 +11,32 @@ public class Port {
     }
 
     public Port(int X, int Y) {
-        this.X = X;
-        this.Y = Y;
+        _x = X;
+        _y = Y;
+    }
+    public Port(Point p) {
+        this(p.x, p.y);
+    }
+
+    public Point getPoint() {
+        return new Point(_x, _y);
     }
     
-    public double GetDistanceFrom(Point p) {
-        return Math.sqrt(Math.pow(X - p.x, 2) + Math.pow(Y - p.y, 2));
+    public double getDistanceFrom(Point p) {
+        return Math.sqrt(Math.pow(_x - p.x, 2) + Math.pow(_y - p.y, 2));
     }
 
     public void Draw(Graphics g) {
-        g.fillRect(X - SquareLength / 2, Y - SquareLength / 2, SquareLength, SquareLength);
+        g.fillRect(_x - SquareLength / 2, _y - SquareLength / 2, SquareLength, SquareLength);
     }
 
     public void SetLocation(int X, int Y) {
-        this.X = X;
-        this.Y = Y;
+        _x = X;
+        _y = Y;
     }
 
     public void Move(int offsetX, int offsetY) {
-        X += offsetX;
-        Y += offsetY;
+        _x += offsetX;
+        _y += offsetY;
     }
 }

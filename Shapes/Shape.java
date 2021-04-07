@@ -2,12 +2,17 @@ package Shapes;
 
 import java.awt.Graphics;
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
+
+import Associate.Port;
 
 public abstract class Shape {
     protected int X, Y;
 
     private int _width, _height;
     private boolean _isSelected = false;
+    protected List<Port> ports;
 
     public Shape(){
         this(0, 0, 0, 0);
@@ -70,6 +75,8 @@ public abstract class Shape {
     public boolean isSelected() {
         return _isSelected;
     }
+
+    public abstract Port getNearestPort(Point p);
 
     public abstract void Draw(Graphics g);
 }

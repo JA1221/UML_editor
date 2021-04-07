@@ -1,20 +1,22 @@
 package Shapes.BasicObjects;
 
+import java.awt.Point;
+import java.util.ArrayList;
+
 import Associate.Port;
 import Shapes.Shape;
 import java.awt.Graphics;
 
 public abstract class BasicObjects extends Shape{
-    private final int PortNumber = 4;
-    protected Port[] Ports;
+    private final int portNumber = 4;
 
     public BasicObjects(){
-        super();
-        createPorts();
+        this(0, 0);
     }
 
     public BasicObjects(int X, int Y) {
         super(X, Y);
+        ports = new ArrayList<Port>();
         createPorts();
     }
 
@@ -22,10 +24,10 @@ public abstract class BasicObjects extends Shape{
     public void SetSize(int width, int height) {
         super.SetSize(width, height);
         
-        Ports[0].SetLocation(X + width / 2, Y); // Up
-        Ports[1].SetLocation(X + width, Y + height / 2); // Right
-        Ports[2].SetLocation(X + width / 2, Y + height); // Down
-        Ports[3].SetLocation(X , Y + height / 2); // Left
+        ports.get(0).SetLocation(X + width / 2, Y); // Up
+        ports.get(1).SetLocation(X + width, Y + height / 2); // Right
+        ports.get(2).SetLocation(X + width / 2, Y + height); // Down
+        ports.get(3).SetLocation(X , Y + height / 2); // Left
     }
 
     @Override
@@ -35,28 +37,42 @@ public abstract class BasicObjects extends Shape{
         int offsetX = x - X;
         int offsetY = y - Y;
 
-        for (int i = 0; i < Ports.length; i++) 
-            Ports[i].Move(offsetX, offsetY);
+        for (int i = 0; i < ports.size(); i++) 
+            ports.get(i).Move(offsetX, offsetY);
     }
 
     @Override
     public void Move(int offsetX, int offsetY) {
         super.Move(offsetX, offsetY);
 
-        for (int i = 0; i < Ports.length; i++) 
-            Ports[i].Move(offsetX, offsetY);
+        for (int i = 0; i < ports.size(); i++) 
+            ports.get(i).Move(offsetX, offsetY);
     }
 
     private void createPorts(){
-        Ports = new Port[PortNumber];
-        for (int i = 0; i < PortNumber; i++)
-            Ports[i] = new Port();
+        for (int i = 0; i < portNumber; i++)
+            ports.add(new Port());
     }
 
     protected void DrawPoints(Graphics g){
         if(isSelected()){
-           for(Port p : Ports)
+           for(Port p : ports)
             p.Draw(g);
         }
+    }
+
+    @Override
+    public Port getNearestPort(Point p){
+        Port nearestPoint = ports.get(0);
+        double nearestDistance = nearestPoint.getDistanceFrom(p);
+
+        for(Port port : ports){
+            if(port.getDistanceFrom(p) < nearestDistance) {
+                nearestPoint = port;
+                nearestDistance = port.getDistanceFrom(p);
+            }
+        }
+
+        return nearestPoint;
     }
 }
