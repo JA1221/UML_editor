@@ -10,24 +10,15 @@ import Associate.Port;
 import Shapes.Shape;
 
 public class CompositionObject extends BasicObjects {
-    private List<Shape> _shapes;
 
     public CompositionObject() {
-        _shapes = new ArrayList<Shape>();
+        shapes = new ArrayList<Shape>();
     }
 
     public CompositionObject(List<Shape> shapes) {
-        _shapes = shapes;
+        this.shapes = shapes;
         updateBorderSize();
     }
-    
-    // public void addShape(Shape shape) {
-    //     _shapes.add(shape);
-    // }
-
-    // public void removeShape(Shape shape) {
-    //     _shapes.remove(shape);
-    // }
 
     @Override
     public Port getNearestPort(Point p) {
@@ -36,7 +27,7 @@ public class CompositionObject extends BasicObjects {
 
     @Override
     public boolean IsInside(Point p) {
-        for(Shape shape : _shapes) {
+        for(Shape shape : shapes) {
             if(shape.IsInside(p))
                 return true;
         }
@@ -51,7 +42,7 @@ public class CompositionObject extends BasicObjects {
         int offsetX = x - X;
         int offsetY = y - Y;
 
-        for(Shape shape : _shapes)
+        for(Shape shape : shapes)
             shape.Move(offsetX, offsetY);
     }
 
@@ -59,7 +50,7 @@ public class CompositionObject extends BasicObjects {
     public void Move(int offsetX, int offsetY) {
         super.Move(offsetX, offsetY);
 
-        for(Shape shape : _shapes)
+        for(Shape shape : shapes)
             shape.Move(offsetX, offsetY);
     }
 
@@ -67,7 +58,7 @@ public class CompositionObject extends BasicObjects {
     public void setSelected(boolean isSelected) {
         super.setSelected(isSelected);
 
-        for(Shape shape : _shapes)
+        for(Shape shape : shapes)
             shape.setSelected(isSelected);
     }
 
@@ -76,7 +67,7 @@ public class CompositionObject extends BasicObjects {
 
     @Override
     public void Draw(Graphics g) {
-        for(Shape shape : _shapes) {
+        for(Shape shape : shapes) {
             shape.Draw(g);
         }
 
@@ -90,14 +81,14 @@ public class CompositionObject extends BasicObjects {
     }
 
     private void updateBorderSize() {
-        if(_shapes.size() > 0) {
+        if(shapes.size() > 0) {
             int top = Integer.MAX_VALUE;
             int bottom = Integer.MIN_VALUE;
             int left = Integer.MAX_VALUE;
             int right = Integer.MIN_VALUE;
             
 
-            for(Shape shape : _shapes) {
+            for(Shape shape : shapes) {
                 top = Math.min(top, shape.getY());
                 bottom = Math.max(bottom, shape.getY() + shape.getHeight());
                 left = Math.min(left, shape.getX());

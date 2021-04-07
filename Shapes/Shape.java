@@ -14,6 +14,7 @@ public abstract class Shape {
     private int _width, _height;
     private boolean _isSelected = false;
     protected List<Port> ports;
+    protected List<Shape> shapes;
 
     public Shape(){
         this(0, 0, 0, 0);
@@ -30,6 +31,7 @@ public abstract class Shape {
         _height = Height;
         _isSelected = false;
         shapeName = "";
+        shapes = new ArrayList<Shape>();
     }
 
     public void SetSize(int Width, int Height) {
@@ -68,6 +70,10 @@ public abstract class Shape {
 
     public int getY(){
         return Y;
+    }
+
+    public List<Shape> getShapes() {
+        return shapes;
     }
 
     public void setSelected(boolean isSelected) {
