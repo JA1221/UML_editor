@@ -22,7 +22,7 @@ public class ToolBar extends JToolBar {
         for(int i = 0; i < _modes.length; i++){
             ModeButton button = new ModeButton(_modes[i]);
 
-            button.setIcon(new ImageIcon(getClass().getResource("ButtonIcon/" + _modeNames[i] + ".png")));
+            button.setIcon(new ImageIcon(getClass().getResource("../ButtonIcon/" + _modeNames[i] + ".png")));
             button.setToolTipText(_modeNames[i]);
             button.setSize(50, 50);
 
