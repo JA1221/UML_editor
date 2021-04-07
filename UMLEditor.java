@@ -10,11 +10,11 @@ public class UMLEditor extends JFrame{
     private Canvas canvas = Canvas.getInstance();
 
     public UMLEditor() {
-        initComponents();
-
         this.setJMenuBar(menuBar);
         this.getContentPane().add(toolbar, BorderLayout.WEST);
         this.getContentPane().add(canvas, BorderLayout.CENTER);
+
+        initComponents();
     }
 
     private void initComponents() {
