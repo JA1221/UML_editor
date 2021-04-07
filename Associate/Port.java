@@ -35,6 +35,11 @@ public class Port {
         _y = Y;
     }
 
+    public void SetLocation(Point p) {
+        _x = p.x;
+        _y = p.y;
+    }
+
     public void Move(int offsetX, int offsetY) {
         _x += offsetX;
         _y += offsetY;
