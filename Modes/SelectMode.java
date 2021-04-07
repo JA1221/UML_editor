@@ -19,7 +19,7 @@ public class SelectMode extends Mode{
         _shape = getPressedShape(e.getPoint());
 
         if(_shape == null){ // 點空區，開始圈選
-            deselectAll(); //取消所有選取
+            canvas.deselectAll(); //取消所有選取
             _shape = new SelectedArea(e.getX(), e.getY());
             canvas.addShape(_shape);
             _selectFlag = true;
@@ -50,7 +50,7 @@ public class SelectMode extends Mode{
     public void mouseReleased(MouseEvent e) {
         if(_selectFlag){ //圈選完
             canvas.removeShape(_shape); //移除圈選圖案
-            deselectAll(); //重設shapes的isSelected
+            canvas.deselectAll(); //重設shapes的isSelected
             multiSelection(_shape); //將圈選的shapes設定狀態      
         }
 
@@ -98,7 +98,7 @@ public class SelectMode extends Mode{
     }
 
     private void singleSelection(Shape shape) {
-        deselectAll();
+        canvas.deselectAll();
         selected(shape);
     }
 
@@ -106,11 +106,5 @@ public class SelectMode extends Mode{
         canvas.removeShape(shape);
         canvas.addShape(shape);
         shape.setSelected(true);
-    }
-
-    private void deselectAll() {
-        for(Shape shape : canvas.GetShapes()){
-            shape.setSelected(false);
-        }
     }
 }

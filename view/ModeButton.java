@@ -18,6 +18,7 @@ public class ModeButton extends JButton {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Canvas.getInstance().setMode(mode);
+                Canvas.getInstance().deselectAll();
                 System.out.println("SetMode:" + _mode);
             }
         });

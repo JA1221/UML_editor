@@ -57,6 +57,12 @@ public class Canvas extends JPanel {
         _mode = mode;
     }
 
+    public void deselectAll() {
+        for(Shape shape : _shapes)
+            shape.setSelected(false);
+        repaint();
+    }
+
     private void InitializeMouseEvents() {
         addMouseListener(new MouseAdapter() {
             @Override
