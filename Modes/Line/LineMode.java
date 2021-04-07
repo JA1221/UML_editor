@@ -28,7 +28,7 @@ public class LineMode extends Mode {
         if(startShape != null) {
             startPort = startShape.getNearestPort(e.getPoint());
             
-            endPort = new Port(startPort.getPoint());  //mouse's location
+            endPort = new Port(e.getPoint());  //mouse's location
             line = createLine(startPort, endPort);
             canvas.addLine(line);
         }
@@ -38,7 +38,8 @@ public class LineMode extends Mode {
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        endPort.SetLocation(e.getPoint()); //follow mouse
+        if(startShape != null)
+            endPort.SetLocation(e.getPoint()); //follow mouse
 
         super.mouseDragged(e);
     }
