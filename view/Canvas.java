@@ -46,6 +46,17 @@ public class Canvas extends JPanel {
         return _shapes;
     }
 
+    public List<Shape> getSelectedShapes() {
+        List<Shape> selectedShapes = new ArrayList<Shape>();
+
+        for(Shape shape : _shapes) {
+            if(shape.isSelected())
+                selectedShapes.add(shape);
+        }
+
+        return selectedShapes;
+    }
+
     public List<Line> addLine(Line line) {
         _lines.add(line);
 
