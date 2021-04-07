@@ -26,7 +26,9 @@ public class Class extends BasicObjects{
         g.setColor(Color.BLACK);
         g.drawRect(X, Y, DefaultWidth, DefaultHeight / 3);
         g.drawRect(X, Y + DefaultHeight / 3, DefaultWidth, DefaultHeight / 3);
-        g.drawRect(X, Y + 2 * DefaultHeight / 3, DefaultWidth, DefaultHeight / 3);      
+        g.drawRect(X, Y + 2 * DefaultHeight / 3, DefaultWidth, DefaultHeight / 3);
+
+        g.drawString(shapeName, getX() + (getWidth() - shapeName.length() * 7) / 2, getY() + 25);      
 
         DrawPoints(g);
     }

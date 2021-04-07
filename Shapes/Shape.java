@@ -9,6 +9,7 @@ import Associate.Port;
 
 public abstract class Shape {
     protected int X, Y;
+    protected String shapeName;
 
     private int _width, _height;
     private boolean _isSelected = false;
@@ -28,6 +29,7 @@ public abstract class Shape {
         _width = Width;
         _height = Height;
         _isSelected = false;
+        shapeName = "";
     }
 
     public void SetSize(int Width, int Height) {
@@ -74,6 +76,10 @@ public abstract class Shape {
 
     public boolean isSelected() {
         return _isSelected;
+    }
+
+    public void setShapeName(String name) {
+        shapeName = name;
     }
 
     public abstract Port getNearestPort(Point p);
