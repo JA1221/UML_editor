@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
-import view.MenuBar;
-import view.ToolBar;
+import view.MenuComponent.MenuBar;
+import view.ToolBarComponent.*;
 import view.Canvas;
 
 public class UMLEditor extends JFrame{

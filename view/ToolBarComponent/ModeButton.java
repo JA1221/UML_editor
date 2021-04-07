@@ -1,4 +1,4 @@
-package view;
+package view.ToolBarComponent;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import Modes.Mode;
+import view.Canvas;
 
 public class ModeButton extends JButton {
     private Mode _mode;
