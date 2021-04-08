@@ -25,12 +25,16 @@ public class LineMode extends Mode {
     public void mousePressed(MouseEvent e) {
         startShape = getPressedShape(e.getPoint());
         
-        if(startShape != null) {
+        if(startShape != null ) { //非空白區
             startPort = startShape.getNearestPort(e.getPoint());
-            
-            endPort = new Port(e.getPoint());  //mouse's location
-            line = createLine(startPort, endPort);
-            canvas.addLine(line);
+
+            if(startPort != null) { //非GroupObject
+                endPort = new Port(e.getPoint());  //mouse's location
+                line = createLine(startPort, endPort);
+                canvas.addLine(line);
+            }else{ //GroupObject
+                startShape = null;
+            }           
         }
 
         super.mousePressed(e);
@@ -52,8 +56,8 @@ public class LineMode extends Mode {
         if(startShape == null| endShape == null) //no shape
             return;
 
-        if(!startShape.equals(endShape)){ //start & end shapes isn't equals
-            endPort = endShape.getNearestPort(e.getPoint()); 
+        endPort = endShape.getNearestPort(e.getPoint());
+        if(!startShape.equals(endShape) & endPort != null){ //start & end shapes isn't equals ; endShape isn't GroupObject;
             canvas.addLine(createLine(startPort, endPort)); //create Line
         }
 
