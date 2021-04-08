@@ -19,6 +19,11 @@ public class UseCase extends BasicObjects{
     }
 
     @Override
+    public boolean IsInside(Point p) {
+        return isInOval(p, new Point(getX() + DefaultWidth / 2, getY() + DefaultHeight / 2));
+    }
+
+    @Override
     public void Draw(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillOval(X, Y, DefaultWidth, DefaultHeight);
@@ -29,5 +34,10 @@ public class UseCase extends BasicObjects{
         g.drawString(shapeName, getX() + (getWidth() - shapeName.length() * 7) / 2, getY() + getHeight() / 2 + 5);
 
         DrawPoints(g);
+    }
+
+    private boolean isInOval(Point point, Point centerPoint) {
+        double v = Math.pow(centerPoint.x - point.x, 2) / Math.pow(DefaultWidth / 2, 2) + Math.pow(centerPoint.y - point.y, 2) / Math.pow(DefaultHeight / 2, 2);
+        return v < 1;
     }
 }
