@@ -1,5 +1,6 @@
 package view.ToolBarComponent;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,16 +12,17 @@ import Modes.Line.*;
 import Modes.BasicObject.*;
 
 public class ToolBar extends JToolBar {
-    private List<ModeButton> _buttonList = new ArrayList<ModeButton>();
+    private List<ModeButton> _buttonList;
     private String _modeNames[] = {"select", "associationLine","generalizationLine", "compositionLine", "class", "useCase"};
     private Mode _modes[] = {new SelectMode(), new AssociationLineMode(), new GeneralizationLineMode(), new CompositionLineMode(), new ClassMode(), new UseCaseMode()};
 
     public ToolBar() {
         this.setOrientation(VERTICAL);
         this.setFloatable(false);
+        _buttonList = new ArrayList<ModeButton>();
 
         for(int i = 0; i < _modes.length; i++){
-            ModeButton button = new ModeButton(_modes[i]);
+            ModeButton button = new ModeButton(_modes[i], _buttonList);
 
             button.setIcon(new ImageIcon(getClass().getResource("../ButtonIcon/" + _modeNames[i] + ".png")));
             button.setToolTipText(_modeNames[i]);
