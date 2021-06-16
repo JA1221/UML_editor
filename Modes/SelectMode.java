@@ -38,7 +38,7 @@ public class SelectMode extends Mode{
         }else{ // 移動shape
             for(Shape shape : canvas.GetShapes()) {
                 if(shape.isSelected())
-                    shape.Move(e.getX() - _currentPoint.x, e.getY() - _currentPoint.y);
+                    shape.move(e.getX() - _currentPoint.x, e.getY() - _currentPoint.y);
             }
         }
 
@@ -64,7 +64,7 @@ public class SelectMode extends Mode{
         List<Shape> shapes = canvas.GetShapes();
 
         for(int i = shapes.size() - 1; i >= 0; i--) {
-            if(shapes.get(i).IsInside(p))
+            if(shapes.get(i).isInside(p))
                 return shapes.get(i);
         }
 
@@ -77,8 +77,8 @@ public class SelectMode extends Mode{
         int x2 = (int)_currentPoint.getX();
         int y2 = (int)_currentPoint.getY();
 
-        selectedArea.SetLocation(Math.min(x1, x2), Math.min(y1, y2));
-        selectedArea.SetSize(Math.abs(x1 - x2), Math.abs(y1 - y2));
+        selectedArea.setLocation(Math.min(x1, x2), Math.min(y1, y2));
+        selectedArea.setSize(Math.abs(x1 - x2), Math.abs(y1 - y2));
     }
 
     private void multiSelection(Shape area) {
@@ -90,7 +90,7 @@ public class SelectMode extends Mode{
             Point p2 = new Point(shapes.get(i).getX() + shapes.get(i).getWidth(), shapes.get(i).getY() + shapes.get(i).getHeight());
 
             //shape左上右下都在selectedArea內
-            if(area.IsInside(p1) & area.IsInside(p2)){
+            if(area.isInside(p1) & area.isInside(p2)){
                 selected(shapes.get(i--));
                 shapeCount--;
             }

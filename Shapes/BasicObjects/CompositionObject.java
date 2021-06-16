@@ -26,9 +26,9 @@ public class CompositionObject extends BasicObjects {
     }
 
     @Override
-    public boolean IsInside(Point p) {
+    public boolean isInside(Point p) {
         for(Shape shape : shapes) {
-            if(shape.IsInside(p))
+            if(shape.isInside(p))
                 return true;
         }
 
@@ -36,22 +36,22 @@ public class CompositionObject extends BasicObjects {
     }
 
     @Override
-    public void SetLocation(int x, int y) {
-        super.SetLocation(x, y);
+    public void setLocation(int x, int y) {
+        super.setLocation(x, y);
 
         int offsetX = x - X;
         int offsetY = y - Y;
 
         for(Shape shape : shapes)
-            shape.Move(offsetX, offsetY);
+            shape.move(offsetX, offsetY);
     }
 
     @Override
-    public void Move(int offsetX, int offsetY) {
-        super.Move(offsetX, offsetY);
+    public void move(int offsetX, int offsetY) {
+        super.move(offsetX, offsetY);
 
         for(Shape shape : shapes)
-            shape.Move(offsetX, offsetY);
+            shape.move(offsetX, offsetY);
     }
 
     @Override
@@ -63,12 +63,12 @@ public class CompositionObject extends BasicObjects {
     }
 
     @Override
-    protected void DrawPoints(Graphics g) {}
+    protected void drawPoints(Graphics g) {}
 
     @Override
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         for(Shape shape : shapes) {
-            shape.Draw(g);
+            shape.draw(g);
         }
 
         if(isSelected()){
@@ -95,8 +95,8 @@ public class CompositionObject extends BasicObjects {
                 right = Math.max(right, shape.getX() + shape.getWidth());
             }
 
-            super.SetLocation(left, top);
-            SetSize(right - left, bottom - top);
+            super.setLocation(left, top);
+            setSize(right - left, bottom - top);
         }        
     }
 }

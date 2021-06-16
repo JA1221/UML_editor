@@ -7,7 +7,7 @@ import java.awt.Point;
 public class SelectedArea extends BasicObjects{
     public SelectedArea(int x, int y) {
         super(x, y);
-        SetSize(getWidth(), getHeight());
+        setSize(getWidth(), getHeight());
     }
 
     public SelectedArea(Point p) {
@@ -15,7 +15,7 @@ public class SelectedArea extends BasicObjects{
     }
 
     @Override
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         g.setColor(new Color(255, 255, 255, 50));
         g.fillRect(X, Y, getWidth(), getHeight());
         g.setColor(Color.BLACK);

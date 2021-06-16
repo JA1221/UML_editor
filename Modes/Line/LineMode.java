@@ -43,7 +43,7 @@ public class LineMode extends Mode {
     @Override
     public void mouseDragged(MouseEvent e) {
         if(startShape != null)
-            endPort.SetLocation(e.getPoint()); //follow mouse
+            endPort.setLocation(e.getPoint()); //follow mouse
 
         super.mouseDragged(e);
     }
@@ -73,7 +73,7 @@ public class LineMode extends Mode {
         List<Shape> shapes = canvas.GetShapes();
 
         for(int i = shapes.size() - 1; i >= 0; i--) {
-            if(shapes.get(i).IsInside(p))
+            if(shapes.get(i).isInside(p))
                 return shapes.get(i);
         }
 

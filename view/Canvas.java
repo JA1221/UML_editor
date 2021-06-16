@@ -80,7 +80,7 @@ public class Canvas extends JPanel {
             line.draw(g);
 
         for(Shape shape : _shapes)
-            shape.Draw(g);
+            shape.draw(g);
     }
     
     public void setMode(Mode mode){

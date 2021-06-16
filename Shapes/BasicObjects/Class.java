@@ -10,16 +10,16 @@ public class Class extends BasicObjects{
 
     public Class(int X, int Y) {
         super(X, Y);
-        SetSize(DefaultWidth, DefaultHeight);
+        setSize(DefaultWidth, DefaultHeight);
     }
 
     public Class(Point p) {
         super(p.x, p.y);
-        SetSize(DefaultWidth, DefaultHeight);
+        setSize(DefaultWidth, DefaultHeight);
     } 
 
     @Override
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillRect(X, Y, DefaultWidth, DefaultHeight);
 
@@ -30,7 +30,7 @@ public class Class extends BasicObjects{
 
         g.drawString(shapeName, getX() + (getWidth() - shapeName.length() * 7) / 2, getY() + 25);      
 
-        DrawPoints(g);
+        drawPoints(g);
     }
 
 }

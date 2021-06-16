@@ -10,21 +10,21 @@ public class UseCase extends BasicObjects{
 
     public UseCase(int X, int Y) {
         super(X, Y);
-        SetSize(DefaultWidth, DefaultHeight);
+        setSize(DefaultWidth, DefaultHeight);
     }
 
     public UseCase(Point p) {
         super(p.x, p.y);
-        SetSize(DefaultWidth, DefaultHeight);
+        setSize(DefaultWidth, DefaultHeight);
     }
 
     @Override
-    public boolean IsInside(Point p) {
+    public boolean isInside(Point p) {
         return isInOval(p, new Point(getX() + DefaultWidth / 2, getY() + DefaultHeight / 2));
     }
 
     @Override
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         g.setColor(Color.WHITE);
         g.fillOval(X, Y, DefaultWidth, DefaultHeight);
 
@@ -33,7 +33,7 @@ public class UseCase extends BasicObjects{
 
         g.drawString(shapeName, getX() + (getWidth() - shapeName.length() * 7) / 2, getY() + getHeight() / 2 + 5);
 
-        DrawPoints(g);
+        drawPoints(g);
     }
 
     private boolean isInOval(Point point, Point centerPoint) {

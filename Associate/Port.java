@@ -26,7 +26,7 @@ public class Port {
         return Math.sqrt(Math.pow(_x - p.x, 2) + Math.pow(_y - p.y, 2));
     }
 
-    public void Draw(Graphics g) {
+    public void draw(Graphics g) {
         g.fillRect(_x - SquareLength / 2, _y - SquareLength / 2, SquareLength, SquareLength);
     }
 
@@ -35,12 +35,12 @@ public class Port {
         _y = Y;
     }
 
-    public void SetLocation(Point p) {
+    public void setLocation(Point p) {
         _x = p.x;
         _y = p.y;
     }
 
-    public void Move(int offsetX, int offsetY) {
+    public void move(int offsetX, int offsetY) {
         _x += offsetX;
         _y += offsetY;
     }

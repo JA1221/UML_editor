@@ -21,8 +21,8 @@ public abstract class BasicObjects extends Shape{
     }
 
     @Override
-    public void SetSize(int width, int height) {
-        super.SetSize(width, height);
+    public void setSize(int width, int height) {
+        super.setSize(width, height);
         
         ports.get(0).SetLocation(X + width / 2, Y); // Up
         ports.get(1).SetLocation(X + width, Y + height / 2); // Right
@@ -31,22 +31,22 @@ public abstract class BasicObjects extends Shape{
     }
 
     @Override
-    public void SetLocation(int x, int y) {
-        super.SetLocation(x, y);
+    public void setLocation(int x, int y) {
+        super.setLocation(x, y);
 
         int offsetX = x - X;
         int offsetY = y - Y;
 
         for (int i = 0; i < ports.size(); i++) 
-            ports.get(i).Move(offsetX, offsetY);
+            ports.get(i).move(offsetX, offsetY);
     }
 
     @Override
-    public void Move(int offsetX, int offsetY) {
-        super.Move(offsetX, offsetY);
+    public void move(int offsetX, int offsetY) {
+        super.move(offsetX, offsetY);
 
         for (int i = 0; i < ports.size(); i++) 
-            ports.get(i).Move(offsetX, offsetY);
+            ports.get(i).move(offsetX, offsetY);
     }
 
     private void createPorts(){
@@ -54,10 +54,10 @@ public abstract class BasicObjects extends Shape{
             ports.add(new Port());
     }
 
-    protected void DrawPoints(Graphics g){
+    protected void drawPoints(Graphics g){
         if(isSelected()){
            for(Port p : ports)
-            p.Draw(g);
+            p.draw(g);
         }
     }
 

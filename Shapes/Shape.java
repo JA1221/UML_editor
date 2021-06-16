@@ -34,22 +34,22 @@ public abstract class Shape {
         shapes = new ArrayList<Shape>();
     }
 
-    public void SetSize(int Width, int Height) {
+    public void setSize(int Width, int Height) {
         _width = Width;
         _height = Height;
     }
 
-    public void SetLocation(int X, int Y) {
+    public void setLocation(int X, int Y) {
         this.X = X;
         this.Y = Y;
     }
 
-    public void Move(int offsetX, int offsetY) {
+    public void move(int offsetX, int offsetY) {
         X += offsetX;
         Y += offsetY;
     }
    
-    public boolean IsInside(Point p) {
+    public boolean isInside(Point p) {
         int x = p.x;
         int y = p.y;
 
@@ -90,5 +90,5 @@ public abstract class Shape {
 
     public abstract Port getNearestPort(Point p);
 
-    public abstract void Draw(Graphics g);
+    public abstract void draw(Graphics g);
 }
