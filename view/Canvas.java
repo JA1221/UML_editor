@@ -75,12 +75,12 @@ public class Canvas extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         setBackground(Color.LIGHT_GRAY);
+        
+        for(Shape shape : _shapes)
+            shape.draw(g);
 
         for(Line line : _lines)
             line.draw(g);
-
-        for(Shape shape : _shapes)
-            shape.draw(g);
     }
     
     public void setMode(Mode mode){
